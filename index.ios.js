@@ -18,23 +18,26 @@ var AnimatedButton = React.createClass({
   },
 
   getInitialState() {
-    return { w: 200, h: 200 }
+    return { x: 200 }
   },
 
   _onPress() {
     LayoutAnimation.spring();
-    this.setState({w: this.state.w + 15, h: this.state.h + 15})
+    var newState = this.state.x + 15;
+    this.setState({x: newState})
   },
 
   _onLongPress() {
     LayoutAnimation.spring();
-    this.setState({w: this.state.w - 15, h: this.state.h - 15})
+    var newState = this.state.x - 15;
+    if(newState > this.getInitialState().x)
+      this.setState({x: newState})
   },
 
   render: function() {
     return (
       <View style={styles.animatedButton}>
-        <View style={[styles.box, {width: this.state.w, height: this.state.h}]}>
+        <View style={[styles.box, {width: this.state.x, height: this.state.x}]}>
           {this.props.children}
         </View>
         <TouchableOpacity
