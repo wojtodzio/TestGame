@@ -72,31 +72,51 @@ class TestGame extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <AnimatedButton label="Press me!">
-          <Text style={styles.welcome}>
-            Welcome to React Native!
+      <View style={styles.mainContainer}>
+        <View style={styles.toolbar}>
+          <Text style={styles.toolbarTitle}>
+            TestGame app
           </Text>
-          <Text style={styles.instructions}>
-            To get started, edit index.ios.js
-          </Text>
-          <Text style={styles.instructions}>
-            Press Cmd+R to reload,{'\n'}
-            Cmd+D or shake for dev menu
-            {'\n'}
-          </Text>
-        </AnimatedButton>
+        </View>
+        <View style={styles.content}>
+          <AnimatedButton label="Press me!">
+            <Text style={styles.welcome}>
+              Welcome to React Native!
+            </Text>
+            <Text style={styles.instructions}>
+              To get started, edit index.ios.js
+            </Text>
+            <Text style={styles.instructions}>
+              Press Cmd+R to reload,{'\n'}
+              Cmd+D or shake for dev menu
+              {'\n'}
+            </Text>
+          </AnimatedButton>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     flex: 1,
-    flexDirection: 'column',
+  },
+  toolbar: {
+    backgroundColor: 'grey',
+    paddingTop: 30,
+    paddingBottom: 10,
+    flexDirection: 'row',
+  },
+  toolbarTitle: {
+    color: 'white',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    flex: 1,
+  },
+  content: {
+    flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: 'white',
   },
   welcome: {
@@ -115,6 +135,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   box: {
+    flex: 1,
+    justifyContent: 'center',
     backgroundColor: 'black',
     margin: 5,
     padding: 15,
