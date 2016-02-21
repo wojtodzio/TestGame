@@ -24,7 +24,7 @@ var AnimatedButton = React.createClass({
     return { x: 200 }
   },
 
-  _onPress() {
+  grow() {
     LayoutAnimation.spring();
     var newState = this.state.x + 15;
     if(newState > SCREEN_WIDTH){
@@ -34,7 +34,7 @@ var AnimatedButton = React.createClass({
       this.setState({x: newState});
   },
 
-  _onLongPress() {
+  shrink() {
     LayoutAnimation.spring();
     var newState = this.state.x - 15;;
     if(newState > this.getInitialState().x)
@@ -46,12 +46,15 @@ var AnimatedButton = React.createClass({
   render: function() {
     return (
       <View style={styles.animatedButton}>
-        <View style={[styles.box, {width: this.state.x, height: this.state.x}]}>
-          {this.props.children}
-        </View>
         <TouchableOpacity
-        onPress={this._onPress}
-        onLongPress={this._onLongPress}>
+          onPress={this.shrink}>
+          <View style={[styles.box, {width: this.state.x, height: this.state.x}]}>
+            {this.props.children}
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={this.grow}
+        onLongPress={this.shrink}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>{this.props.label}</Text>
           </View>
