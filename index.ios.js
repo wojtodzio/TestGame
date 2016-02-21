@@ -7,8 +7,11 @@ import React, {
   View,
   TouchableHighlight,
   LayoutAnimation,
-  TouchableOpacity
+  TouchableOpacity,
+  Diemensions,
 } from 'react-native';
+
+const SCREEN_WIDTH = React.Dimensions.get('window').width;
 
 var IdleTimerManager = require('NativeModules').IdleTimerManager;
 
@@ -24,14 +27,20 @@ var AnimatedButton = React.createClass({
   _onPress() {
     LayoutAnimation.spring();
     var newState = this.state.x + 15;
-    this.setState({x: newState})
+    if(newState > SCREEN_WIDTH){
+      this.setState({x: SCREEN_WIDTH});
+    }
+    else
+      this.setState({x: newState});
   },
 
   _onLongPress() {
     LayoutAnimation.spring();
-    var newState = this.state.x - 15;
+    var newState = this.state.x - 15;;
     if(newState > this.getInitialState().x)
-      this.setState({x: newState})
+      this.setState({x: newState});
+    else
+      this.setState({x: this.getInitialState().x});
   },
 
   render: function() {
