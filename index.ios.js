@@ -18,7 +18,7 @@ var AnimatedButton = React.createClass({
   },
 
   getInitialState() {
-    return { w: 175, h: 175 }
+    return { w: 200, h: 200 }
   },
 
   _onPress() {
@@ -95,9 +95,8 @@ const styles = StyleSheet.create({
   },
   instructions: {
     textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
     color: 'white',
+    marginBottom: 5,
   },
   animatedButton: {
     justifyContent: 'center',
@@ -105,9 +104,11 @@ const styles = StyleSheet.create({
   },
   box: {
     backgroundColor: 'black',
-    marginBottom: 10,
+    margin: 5,
+    padding: 15,
   },
   button: {
+    margin: 5,
     padding: 10,
     backgroundColor: 'black',
     alignItems: 'center',
